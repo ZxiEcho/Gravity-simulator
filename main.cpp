@@ -47,6 +47,10 @@ bool init(vector<Planets>& planets){
     return true;
 }
 
+bool init_test(vector<Planets>& planets){
+
+}
+
 int main(int argc, char const *argv[]){
     vector<Planets> planets = {};
     bool zero = init(planets);
@@ -54,7 +58,17 @@ int main(int argc, char const *argv[]){
     if (zero){
         return 0;
     }
-    std::cout << planets[1].mass;
+
+    for(int i = 0; i < planets.size(); i++){
+        for(int j = i + 1; j < planets.size(); j++){
+            float xdis = planets[i].X - planets[j].X;
+            float ydis = planets[i].Y - planets[j].Y;
+            float distance = sqrt((xdis * xdis) + (ydis * ydis));
+
+            float gravity = (planets[i].mass * planets[j].mass) / distance;
+        }
+    }
+    
     return 0;
 }
 

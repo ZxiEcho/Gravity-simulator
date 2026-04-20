@@ -1,4 +1,4 @@
-CC = gcc
+CC = g++
 
 .PHONY: run
 run: 
@@ -6,4 +6,4 @@ run:
 
 .PHONY: clean
 clean: 
-	$(CC) rm -f main
+	$(CC) rm main

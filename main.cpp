@@ -1,6 +1,7 @@
 
 #include <vector>
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 struct Planets{
@@ -10,7 +11,8 @@ struct Planets{
     float Z;
     float size;
     float mass;
-    float speed;
+    float x_speed;
+    float y_speed;
 };
 
 
@@ -27,7 +29,8 @@ bool init(vector<Planets>& planets){
         float z = 0; 
         float size = 0;
         float mass = 0;
-        float speed = 0;
+        float xspeed = 0;
+        float yspeed = 0;
 
         std::cin >> x >> y >> z >> size >> mass;
 
@@ -36,7 +39,8 @@ bool init(vector<Planets>& planets){
         temp_planet.Z = z;
         temp_planet.size = size; 
         temp_planet.mass = mass;
-        temp_planet.speed = speed;
+        temp_planet.x_speed = xspeed;
+        temp_planet.y_speed = yspeed;
 
         planets.push_back(temp_planet);
         
@@ -51,6 +55,32 @@ bool init_test(vector<Planets>& planets){
 
 }
 
+
+
+vector<float> force_calculator(vector<Planets>& planets){
+    vector<float> temp_vec = {};
+    for(int i = 0; i < planets.size(); i++){
+        for(int j = i + 1; j < planets.size(); j++){
+            float xdis = planets[i].X - planets[j].X;
+            float ydis = planets[i].Y - planets[j].Y;
+            float distance = sqrt((xdis * xdis) + (ydis * ydis));
+
+            float gravity = (planets[i].mass * planets[j].mass) / distance;
+            temp_vec.push_back(gravity);
+        }
+    }
+    return temp_vec;
+}
+
+void apply_force(vector<Planets>& planets, vector<float>& forces){
+
+    for (int i = 0; i < planets.size; i++){
+        for(int j = i + 1; j < planets.size; j++){
+
+        }
+    }
+}
+
 int main(int argc, char const *argv[]){
     vector<Planets> planets = {};
     bool zero = init(planets);
@@ -59,15 +89,12 @@ int main(int argc, char const *argv[]){
         return 0;
     }
 
-    for(int i = 0; i < planets.size(); i++){
-        for(int j = i + 1; j < planets.size(); j++){
-            float xdis = planets[i].X - planets[j].X;
-            float ydis = planets[i].Y - planets[j].Y;
-            float distance = sqrt((xdis * xdis) + (ydis * ydis));
+    while(1){
+        vector<float> forces = force_calculator(planets);
 
-            float gravity = (planets[i].mass * planets[j].mass) / distance;
-        }
+        apply_force(planets, forces);
     }
+    
     
     return 0;
 }

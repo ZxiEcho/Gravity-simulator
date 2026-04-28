@@ -63,10 +63,11 @@ vector<float> force_calculator(vector<Planets>& planets){
         for(int j = i + 1; j < planets.size(); j++){
             float xdis = planets[i].X - planets[j].X;
             float ydis = planets[i].Y - planets[j].Y;
-            float distance = sqrt((xdis * xdis) + (ydis * ydis));
 
-            float gravity = (planets[i].mass * planets[j].mass) / distance;
-            temp_vec.push_back(gravity);
+            float gravity_x = (planets[i].mass * planets[j].mass) / xdis;
+            float gravity_y = (planets[i].mass * planets[j].mass) / ydis;
+            temp_vec.push_back(gravity_x);
+            temp_vec.push_back(gravity_y);
         }
     }
     return temp_vec;
@@ -74,8 +75,12 @@ vector<float> force_calculator(vector<Planets>& planets){
 
 void apply_force(vector<Planets>& planets, vector<float>& forces){
 
-    for (int i = 0; i < planets.size; i++){
-        for(int j = i + 1; j < planets.size; j++){
+    for (int i = 0; i < planets.size(); i++){
+        for(int j = i + 1; j < planets.size(); j++){ 
+            int force_index = i * planets.size() + j - 1;
+            for(int k = force_index; k < force_index + 2; k++){
+                 
+            }
 
         }
     }

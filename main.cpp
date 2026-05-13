@@ -78,11 +78,20 @@ void apply_force(vector<Planets>& planets, vector<float>& forces){
     for (int i = 0; i < planets.size(); i++){
         for(int j = i + 1; j < planets.size(); j++){ 
             int force_index = i * planets.size() + j - 1;
-            for(int k = force_index; k < force_index + 2; k++){
-                 
-            }
+            planets[i].x_speed += forces[force_index];  
+            planets[j].x_speed += forces[force_index];
 
+            
+            planets[i].y_speed += forces[force_index + 1];
+            planets[j].y_speed += forces[force_index + 1];
         }
+    }
+}
+
+void update_position(vector<Planets>& planets){
+    for(int i = 0; i < planets.size(); i++){
+        planets[i].X += planets[i].x_speed;
+        planets[i].Y += planets[i].y_speed;
     }
 }
 

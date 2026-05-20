@@ -4,6 +4,8 @@
 #include <cmath>
 using namespace std;
 
+#include <SFML/Graphics.hpp>
+
 struct Planets{
     int id;
     float X;
@@ -51,8 +53,8 @@ bool init(vector<Planets>& planets){
     return true;
 }
 
-bool init_test(vector<Planets>& planets){
-
+void init_test(vector<Planets>& planets){
+    
 }
 
 
@@ -97,11 +99,28 @@ void update_position(vector<Planets>& planets){
 
 int main(int argc, char const *argv[]){
     vector<Planets> planets = {};
-    bool zero = init(planets);
+    //bool zero = init(planets);
 
-    if (zero){
+
+    if (0){
         return 0;
     }
+
+    sf::RenderWindow window(sf::VideoMode({200,200}), "SFML Works");
+    sf::CircleShape shape(75.f);
+    shape.setFillColor(sf::Color::Green);
+
+    while(window.isOpen()){
+        while(const std::optional event = window.pollEvent()){
+            if(event->is<sf::Event::Closed>()){
+               window.close(); 
+            }
+        }
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
+
 
     while(1){
         vector<float> forces = force_calculator(planets);

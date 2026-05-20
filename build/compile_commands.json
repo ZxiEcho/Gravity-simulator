@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/echo/dev/gravity/Gravity-simulator/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/Gravity-simulator.dir/main.cpp.o -c /home/echo/dev/gravity/Gravity-simulator/main.cpp",
+  "file": "/home/echo/dev/gravity/Gravity-simulator/main.cpp",
+  "output": "CMakeFiles/Gravity-simulator.dir/main.cpp.o"
+}
+]

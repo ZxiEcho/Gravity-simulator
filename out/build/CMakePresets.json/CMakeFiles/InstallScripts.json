@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/echo/dev/gravity/Gravity-simulator/out/build/CMakePresets.json/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,3 +1,0 @@
-/home/echo/dev/gravity/Gravity-simulator/build/CMakeFiles/Gravity-simulator.dir
-/home/echo/dev/gravity/Gravity-simulator/build/CMakeFiles/edit_cache.dir
-/home/echo/dev/gravity/Gravity-simulator/build/CMakeFiles/rebuild_cache.dir

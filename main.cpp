@@ -34,7 +34,7 @@ bool init(vector<Planets>& planets){
         float xspeed = 0;
         float yspeed = 0;
 
-        std::cin >> x >> y >> z >> size >> mass;
+        std::cin >> x >> y >> size >> mass;
 
         temp_planet.X = x;
         temp_planet.Y = y;
@@ -53,8 +53,46 @@ bool init(vector<Planets>& planets){
     return true;
 }
 
-void init_test(vector<Planets>& planets){
-    
+bool init_test(vector<Planets>& planets){
+    Planets temp_planet;
+    temp_planet.id = 0;
+    temp_planet.X = 50;
+    temp_planet.Y = 50;
+    temp_planet.Z = 0;
+    temp_planet.size = 5;
+    temp_planet.mass = 5;
+    temp_planet.x_speed = 0;
+    temp_planet.y_speed = 0;
+
+    planets.push_back(temp_planet);
+
+    temp_planet.id = 1;
+    temp_planet.X = 200;
+    temp_planet.Y = 200;
+    temp_planet.Z = 0;
+    temp_planet.size = 10;
+    temp_planet.mass = 15;
+    temp_planet.x_speed = 0;
+    temp_planet.y_speed = 0;
+
+    planets.push_back(temp_planet);
+
+    return false;
+}
+
+void update_drawing(vector<Planets>& planets, sf::RenderWindow& window){
+    window.clear();
+    for(int i = 0; i < planets.size(); i++){
+        sf::CircleShape shape(planets[i].size);
+        shape.setFillColor(sf::Color::Green);
+
+        sf::Vector2f v(planets[i].X, planets[i].Y);
+
+        shape.setPosition(v);
+
+        window.draw(shape);
+    }
+    window.display();
 }
 
 
@@ -99,35 +137,20 @@ void update_position(vector<Planets>& planets){
 
 int main(int argc, char const *argv[]){
     vector<Planets> planets = {};
-    //bool zero = init(planets);
-
-
-    if (0){
+    bool zero = init_test(planets);
+    
+    if (zero){
         return 0;
     }
-
-    sf::RenderWindow window(sf::VideoMode({200,200}), "SFML Works");
-    sf::CircleShape shape(75.f);
-    shape.setFillColor(sf::Color::Green);
+    
+    sf::RenderWindow window(sf::VideoMode({1000,1000}), "SFML Works");
 
     while(window.isOpen()){
-        while(const std::optional event = window.pollEvent()){
-            if(event->is<sf::Event::Closed>()){
-               window.close(); 
-            }
-        }
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-
-
-    while(1){
         vector<float> forces = force_calculator(planets);
-
         apply_force(planets, forces);
+        update_drawing(planets, window);
+        
     }
-    
     
     return 0;
 }

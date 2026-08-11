@@ -6,7 +6,7 @@ run:
 
 .PHONY: clean
 clean: 
-	$(CC) rm main
+	rm main
 
 .PHONY: sfml
 sfml: 

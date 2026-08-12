@@ -150,8 +150,8 @@ void apply_force(vector<Planets>& planets, vector<tuple<float,float>>& forces){
     for(int i = 0; i < planets.size(); i++){
         for(int j = i * (planets.size() - 1); j < i * (planets.size() - 1) + (planets.size() - 1); j++){
             tuple temp = forces[j];
-            planets[i].x_speed += get<0>(temp);
-            planets[i].y_speed += get<1>(temp); 
+            planets[i].x_speed += get<0>(temp) / planets[i].mass;
+            planets[i].y_speed += get<1>(temp) / planets[i].mass; 
         }
 
 

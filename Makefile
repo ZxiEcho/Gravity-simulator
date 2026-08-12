@@ -10,4 +10,4 @@ clean:
 
 .PHONY: sfml
 sfml: 
-	$(CC) main.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system
+	$(CC) main.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system 
